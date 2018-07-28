@@ -8,19 +8,18 @@ public class Field : MonoBehaviour
     public int width = 10;
     public int depth = 10;
 
-    private const float CellHW = 0.5f;
-    private const float CellHD = 0.5f;
+    private const float CellWidth = 10.0f;
 
     void Start()
     {
         // フィールド生成
-        float hw = width / 2.0f;
-        float hd = depth / 2.0f;
-        for (float w = -hw + CellHW; w < hw; w += 1.0f)
+        float hw = width * CellWidth * 0.5f;
+        float hd = depth * CellWidth * 0.5f;
+        for (float w = -hw + CellWidth * 0.5f; w < hw; w += CellWidth)
         {
-            for (float d = -hd + CellHD; d < hd; d += 1.0f)
+            for (float d = -hd + CellWidth * 0.5f; d < hd; d += CellWidth)
             {
-                var pos = new Vector3(w, -1.0f, d);
+                var pos = new Vector3(w, CellWidth * -0.5f, d);
                 Instantiate(cell, pos, new Quaternion());
             }
 
