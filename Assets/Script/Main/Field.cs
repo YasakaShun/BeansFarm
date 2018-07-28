@@ -8,7 +8,7 @@ public class Field : MonoBehaviour
     public int width = 10;
     public int depth = 10;
 
-    private const float CellWidth = 10.0f;
+    private const float CellWidth = 1.0f;
 
     void Start()
     {
