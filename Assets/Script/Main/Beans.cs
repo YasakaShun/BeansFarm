@@ -1,26 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Beans : MonoBehaviour
 {
     public GameObject target;
-    UnityEngine.AI.NavMeshAgent agent;
 
-	// Use this for initialization
+    private NavMeshAgent agent;
+    private Animator anim;
+
 	void Start()
     {
-        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
+
         agent.destination = target.transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
         updateAI();
+        updateAnim();
 	}
 
     private void updateAI()
     {
+    }
+
+    private void updateAnim()
+    {
+        // anim.SetFloat("Speed", 0.1f);
+        // anim.SetFloat("Direction", 0.1f);
     }
 }
