@@ -21,8 +21,12 @@ public class Beans : MonoBehaviour
     void Update()
     {
         updateAI();
-        updateAnim();
 	}
+
+    void FixedUpdate()
+    {
+        updateAnim();
+    }
 
     private void updateAI()
     {
@@ -30,7 +34,8 @@ public class Beans : MonoBehaviour
 
     private void updateAnim()
     {
-        // anim.SetFloat("Speed", 0.1f);
-        // anim.SetFloat("Direction", 0.1f);
+        // NavMesh での移動速度にあわせてモーションを変える
+        var vel = agent.velocity;
+        anim.SetFloat("Speed", vel.magnitude);
     }
 }
