@@ -8,6 +8,7 @@ public class Beans : MonoBehaviour
     private NavMeshAgent agent;
     private Animator anim;
     private State state;
+    private GameObject prefab;
 
     private enum State
     {
@@ -21,6 +22,7 @@ public class Beans : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        prefab = (GameObject)Resources.Load("Prefab/Main/unitychan");
 
         startWait();
     }
@@ -52,6 +54,7 @@ public class Beans : MonoBehaviour
             case State.ToCell:
                 if (transform.position.Equals(agent.destination))
                 {
+                    Instantiate(prefab, this.transform);
                     startWait();
                 }
                 break;

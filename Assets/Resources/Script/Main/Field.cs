@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Field : MonoBehaviour
 {
-    public Transform cell;
+    public Transform prefab;
     public int width = 10;
     public int depth = 10;
 
@@ -26,7 +26,8 @@ public class Field : MonoBehaviour
             for (float d = -hd + CellWidth * 0.5f; d < hd; d += CellWidth)
             {
                 var pos = new Vector3(w, CellWidth * -0.5f, d);
-                Instantiate(cell, pos, new Quaternion());
+                var cell = Instantiate(prefab, pos, new Quaternion());
+                cell.transform.parent = this.transform;
             }
 
         }

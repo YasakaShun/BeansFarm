@@ -61,10 +61,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\Main\Beans.cs" />
-    <Compile Include="Assets\Script\Main\Cell.cs" />
-    <Compile Include="Assets\Script\Main\Field.cs" />
-    <Compile Include="Assets\Script\Title\TitleGameSystem.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Beans.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Cell.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Field.cs" />
+    <Compile Include="Assets\Resources\Script\Title\TitleGameSystem.cs" />
     <Compile Include="Assets\UnityChan\Scripts\CameraController.cs" />
     <Compile Include="Assets\UnityChan\Scripts\FaceUpdate.cs" />
     <Compile Include="Assets\UnityChan\Scripts\IdleChanger.cs" />
