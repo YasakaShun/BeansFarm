@@ -10,9 +10,15 @@ public class Field : MonoBehaviour
 
     private const float CellWidth = 1.0f;
 
+    public static GameObject GetRandomCell()
+    {
+        var cells = GameObject.FindGameObjectsWithTag("Cell");
+        return cells[Random.Range(0, cells.Length)];
+    }
+
     void Start()
     {
-        // フィールド生成
+        // 床生成
         float hw = width * CellWidth * 0.5f;
         float hd = depth * CellWidth * 0.5f;
         for (float w = -hw + CellWidth * 0.5f; w < hw; w += CellWidth)

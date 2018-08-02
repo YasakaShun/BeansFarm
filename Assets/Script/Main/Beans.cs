@@ -5,21 +5,29 @@ using UnityEngine.AI;
 
 public class Beans : MonoBehaviour
 {
-    public GameObject target;
-
     private NavMeshAgent agent;
     private Animator anim;
+    private State state;
+
+    private enum State
+    {
+        Wait,
+        ToSource,
+        ToCell,
+        TERM
+    }
 
 	void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
 
-        agent.destination = target.transform.position;
+        startWait();
     }
 
     void Update()
     {
+        updateState();
         updateAI();
 	}
 
@@ -28,8 +36,45 @@ public class Beans : MonoBehaviour
         updateAnim();
     }
 
+    private void updateState()
+    {
+        switch (state)
+        {
+            case State.Wait:
+                startToSource();
+                break;
+            case State.ToSource:
+                if (transform.position.Equals(agent.destination))
+                {
+                    startToCell();
+                }
+                break;
+            case State.ToCell:
+                if (transform.position.Equals(agent.destination))
+                {
+                    startWait();
+                }
+                break;
+            default:
+                Debug.Assert(false, "unknown state.");
+                break;
+        }
+    }
+
     private void updateAI()
     {
+        switch (state)
+        {
+            case State.Wait:
+                break;
+            case State.ToSource:
+                break;
+            case State.ToCell:
+                break;
+            default:
+                Debug.Assert(false, "unknown state.");
+                break;
+        }
     }
 
     private void updateAnim()
@@ -38,4 +83,31 @@ public class Beans : MonoBehaviour
         var vel = agent.velocity;
         anim.SetFloat("Speed", vel.magnitude);
     }
+
+    private void startWait()
+    {
+        agent.enabled = false;
+
+        state = State.Wait;
+    }
+
+    private void startToSource()
+    {
+        agent.enabled = true;
+
+        var source = GameObject.FindGameObjectsWithTag("Source");
+        agent.destination = source[0].transform.position;
+        state = State.ToSource;
+    }
+
+    private void startToCell()
+    {
+        agent.enabled = true;
+
+        var cell = Field.GetRandomCell();
+        agent.destination = cell.transform.position;
+        state = State.ToCell;
+    }
+
+
 }
