@@ -10,11 +10,15 @@ public class Beans : MonoBehaviour
     private State state;
     private GameObject prefab;
 
+    private GameObject waterBall = null;
+
     private enum State
     {
         Wait,
         ToSource,
+        GatherWater,
         ToCell,
+        UseWater,
         TERM
     }
 
@@ -30,7 +34,6 @@ public class Beans : MonoBehaviour
     void Update()
     {
         updateState();
-        updateAI();
 	}
 
     void FixedUpdate()
@@ -43,36 +46,22 @@ public class Beans : MonoBehaviour
         switch (state)
         {
             case State.Wait:
-                startToSource();
                 break;
             case State.ToSource:
                 if (transform.position.Equals(agent.destination))
                 {
-                    startToCell();
+                    startGatherWater();
                 }
+                break;
+            case State.GatherWater:
                 break;
             case State.ToCell:
                 if (transform.position.Equals(agent.destination))
                 {
-                    Instantiate(prefab, this.transform);
-                    startWait();
+                    startUseWater();
                 }
                 break;
-            default:
-                Debug.Assert(false, "unknown state.");
-                break;
-        }
-    }
-
-    private void updateAI()
-    {
-        switch (state)
-        {
-            case State.Wait:
-                break;
-            case State.ToSource:
-                break;
-            case State.ToCell:
+            case State.UseWater:
                 break;
             default:
                 Debug.Assert(false, "unknown state.");
@@ -92,6 +81,8 @@ public class Beans : MonoBehaviour
         agent.enabled = false;
 
         state = State.Wait;
+
+        StartCoroutine(wait());
     }
 
     private void startToSource()
@@ -103,6 +94,15 @@ public class Beans : MonoBehaviour
         state = State.ToSource;
     }
 
+    private void startGatherWater()
+    {
+        agent.enabled = false;
+
+        state = State.GatherWater;
+
+        StartCoroutine(gatherWater());
+    }
+
     private void startToCell()
     {
         agent.enabled = true;
@@ -110,6 +110,53 @@ public class Beans : MonoBehaviour
         var cell = Field.GetRandomCell();
         agent.destination = cell.transform.position;
         state = State.ToCell;
+    }
+
+    private void startUseWater()
+    {
+        agent.enabled = false;
+
+        state = State.UseWater;
+
+        StartCoroutine(useWater());
+    }
+
+    private IEnumerator wait()
+    {
+        yield return new WaitForSeconds(1);
+        startToSource();
+    }
+
+    private IEnumerator gatherWater()
+    {
+        yield return new WaitForSeconds(1);
+
+        createWaterBall();
+        startToCell();
+    }
+
+    private IEnumerator useWater()
+    {
+        yield return new WaitForSeconds(1);
+
+        if (waterBall != null)
+        {
+            Destroy(waterBall);
+            waterBall = null;
+        }
+        //Instantiate(prefab, this.transform);
+        startWait();
+    }
+
+    private void createWaterBall()
+    {
+        Debug.Assert(waterBall == null);
+        waterBall = Instantiate(
+            (GameObject)Resources.Load("Prefab/Main/WaterBall"),
+            this.transform.position + Vector3.up * 2,
+            Quaternion.identity,
+            this.transform
+            );
     }
 
 
