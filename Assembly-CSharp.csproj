@@ -61,11 +61,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Resources\Script\Main\Beans.cs" />
     <Compile Include="Assets\Resources\Script\Main\Cell.cs" />
     <Compile Include="Assets\Resources\Script\Main\Field.cs" />
     <Compile Include="Assets\Resources\Script\Main\Fountain.cs" />
     <Compile Include="Assets\Resources\Script\Main\FountainGauge.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Player\Beans.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Player\IState.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Player\StateGatherWater.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Player\StateTemplate.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Player\StateToCell.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Player\StateToSource.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Player\StateUseWater.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Player\StateWait.cs" />
     <Compile Include="Assets\Resources\Script\Main\Source.cs" />
     <Compile Include="Assets\Resources\Script\Main\WaterBall.cs" />
     <Compile Include="Assets\Resources\Script\Title\TitleGameSystem.cs" />
