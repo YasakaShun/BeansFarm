@@ -66,6 +66,7 @@
     <Compile Include="Assets\Resources\Script\Main\Field.cs" />
     <Compile Include="Assets\Resources\Script\Main\Fountain.cs" />
     <Compile Include="Assets\Resources\Script\Main\Source.cs" />
+    <Compile Include="Assets\Resources\Script\Main\WaterBall.cs" />
     <Compile Include="Assets\Resources\Script\Title\TitleGameSystem.cs" />
     <Compile Include="Assets\UnityChan\Scripts\CameraController.cs" />
     <Compile Include="Assets\UnityChan\Scripts\FaceUpdate.cs" />

@@ -8,8 +8,11 @@ public class Beans : MonoBehaviour
     private NavMeshAgent agent;
     private Animator anim;
     private State state;
-    private GameObject prefab;
+    private GameObject playerPrefab;
+    private GameObject waterBallPrefab;
 
+    private GameObject targetFountain = null;
+    private GameObject targetCell = null;
     private GameObject waterBall = null;
 
     private enum State
@@ -26,7 +29,8 @@ public class Beans : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
-        prefab = (GameObject)Resources.Load("Prefab/Main/unitychan");
+        playerPrefab = (GameObject)Resources.Load("Prefab/Main/unitychan");
+        waterBallPrefab = (GameObject)Resources.Load("Prefab/Main/WaterBall");
 
         startWait();
     }
@@ -91,11 +95,11 @@ public class Beans : MonoBehaviour
 
         agent.enabled = true;
 
-        var source = Source.GetRandomFountain();
-        var pos = source.transform.position;
+        targetFountain = Source.GetRandomFountain();
+        var pos = targetFountain.transform.position;
         pos.y = 0;
         agent.destination = pos;
-        agent.stoppingDistance = source.transform.localScale.x * 0.5f + agent.radius;
+        agent.stoppingDistance = targetFountain.transform.localScale.x * 0.5f + agent.radius;
     }
 
     private void startGatherWater()
@@ -113,8 +117,8 @@ public class Beans : MonoBehaviour
 
         agent.enabled = true;
 
-        var cell = Field.GetRandomCell();
-        agent.destination = cell.transform.position;
+        targetCell = Field.GetRandomCell();
+        agent.destination = targetCell.transform.position;
         agent.stoppingDistance = 0;
     }
 
@@ -137,7 +141,10 @@ public class Beans : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
 
-        createWaterBall();
+        Debug.Assert(targetFountain != null);
+
+        var power = targetFountain.GetComponent<Fountain>().GetPower();
+        createWaterBall(power);
         startToCell();
     }
 
@@ -145,24 +152,42 @@ public class Beans : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
 
-        if (waterBall != null)
+        if (targetCell != null)
         {
-            Destroy(waterBall);
-            waterBall = null;
+            if (waterBall != null)
+            {
+                var cellScript = targetCell.GetComponent<Cell>();
+                cellScript.waterPower +=
+                    waterBall.GetComponent<WaterBall>().power;
+                if (30.0f < cellScript.waterPower)
+                {
+                    Instantiate(playerPrefab, this.transform);
+                }
+            }
+            targetCell = null;
+
+            startWait();
         }
-        //Instantiate(prefab, this.transform);
-        startWait();
+        else
+        {
+            if (waterBall != null)
+            {
+                startToCell();
+            }
+
+        }
     }
 
-    private void createWaterBall()
+    private void createWaterBall(float power)
     {
         Debug.Assert(waterBall == null);
         waterBall = Instantiate(
-            (GameObject)Resources.Load("Prefab/Main/WaterBall"),
+            waterBallPrefab,
             this.transform.position + Vector3.up * 2,
             Quaternion.identity,
             this.transform
             );
+        waterBall.GetComponent<WaterBall>().power = power;
     }
 
     private bool isReached()

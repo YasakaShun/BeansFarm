@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
-    private float waterPower = 0.0f;
+    public float waterPower = 0.0f;
 
 	void Start()
     {
