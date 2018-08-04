@@ -17,7 +17,13 @@ namespace Player
             Agent = GetComponent<NavMeshAgent>();
             Anim = GetComponent<Animator>();
 
-            StateWait.ChangeState(this);
+            // TODO: 正式対応
+            // C# のバージョンを4から6に変更したことで、
+            // なぜか state = newState; でNullExceptionが出るようになってしまった。
+            // 仕方ないので問題を回避。
+            state = new StateWait(this);
+            state.OnStart();
+            //StateWait.ChangeState(this);
         }
 
         void Update()
