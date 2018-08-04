@@ -13,11 +13,17 @@ public class Field : MonoBehaviour
     public static GameObject GetRandomCell()
     {
         var cells = GameObject.FindGameObjectsWithTag("Cell");
+        if (cells.Length == 0)
+        {
+            return null;
+        }
         return cells[Random.Range(0, cells.Length)];
     }
 
     void Start()
     {
+        // DummyFloor 非表示
+        GetComponentInChildren<MeshRenderer>().enabled = false;
         // 床生成
         float hw = width * CellWidth * 0.5f;
         float hd = depth * CellWidth * 0.5f;

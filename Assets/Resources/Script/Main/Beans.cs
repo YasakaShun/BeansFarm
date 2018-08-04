@@ -48,7 +48,7 @@ public class Beans : MonoBehaviour
             case State.Wait:
                 break;
             case State.ToSource:
-                if (transform.position.Equals(agent.destination))
+                if (isReached())
                 {
                     startGatherWater();
                 }
@@ -56,7 +56,7 @@ public class Beans : MonoBehaviour
             case State.GatherWater:
                 break;
             case State.ToCell:
-                if (transform.position.Equals(agent.destination))
+                if (isReached())
                 {
                     startUseWater();
                 }
@@ -78,45 +78,51 @@ public class Beans : MonoBehaviour
 
     private void startWait()
     {
-        agent.enabled = false;
-
         state = State.Wait;
+
+        agent.enabled = false;
 
         StartCoroutine(wait());
     }
 
     private void startToSource()
     {
+        state = State.ToSource;
+
         agent.enabled = true;
 
-        var source = GameObject.FindGameObjectsWithTag("Source");
-        agent.destination = source[0].transform.position;
-        state = State.ToSource;
+        var source = Source.GetRandomFountain();
+        var pos = source.transform.position;
+        pos.y = 0;
+        agent.destination = pos;
+        agent.stoppingDistance = source.transform.localScale.x * 0.5f + agent.radius;
     }
 
     private void startGatherWater()
     {
-        agent.enabled = false;
-
         state = State.GatherWater;
+
+        agent.enabled = false;
 
         StartCoroutine(gatherWater());
     }
 
     private void startToCell()
     {
+        state = State.ToCell;
+
         agent.enabled = true;
 
         var cell = Field.GetRandomCell();
         agent.destination = cell.transform.position;
-        state = State.ToCell;
+        agent.stoppingDistance = 0;
     }
 
     private void startUseWater()
     {
-        agent.enabled = false;
-
         state = State.UseWater;
+
+        agent.enabled = false;
 
         StartCoroutine(useWater());
     }
@@ -159,5 +165,13 @@ public class Beans : MonoBehaviour
             );
     }
 
+    private bool isReached()
+    {
+        if (agent.remainingDistance <= agent.stoppingDistance)
+        {
+            return true;
+        }
+        return false;
+    }
 
 }
