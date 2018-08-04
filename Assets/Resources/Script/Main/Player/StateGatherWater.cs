@@ -42,9 +42,9 @@ namespace Player
             Debug.Assert(fountain != null);
 
             var power = fountain.GetComponent<Fountain>().GetPower();
-            var waterBall = createWaterBall(power);
+            player.WaterBall = createWaterBall(power);
 
-            StateToCell.ChangeState(player, waterBall);
+            StateToCell.ChangeState(player);
         }
 
         private GameObject createWaterBall(float power)
@@ -56,7 +56,7 @@ namespace Player
                 Quaternion.identity,
                 player.transform
                 );
-            waterBall.GetComponent<WaterBall>().power = power;
+            waterBall.GetComponent<WaterBall>().Power = power;
 
             return waterBall;
         }

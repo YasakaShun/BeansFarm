@@ -8,15 +8,14 @@ namespace Player
 {
     class StateToCell : IState
     {
-        public static void ChangeState(Beans player, GameObject waterBall)
+        public static void ChangeState(Beans player)
         {
-            player.ChangeState(new StateToCell(player, waterBall));
+            player.ChangeState(new StateToCell(player));
         }
 
-        private StateToCell(Beans player, GameObject waterBall)
+        private StateToCell(Beans player)
         {
             this.player = player;
-            this.waterBall = waterBall;
         }
 
         public void OnStart()
@@ -37,12 +36,11 @@ namespace Player
         {
             if (player.isReached())
             {
-                StateUseWater.ChangeState(player, waterBall, targetCell);
+                StateUseWater.ChangeState(player, targetCell);
             }
         }
 
         private Beans player;
-        private GameObject waterBall;
         private GameObject targetCell;
     }
 }

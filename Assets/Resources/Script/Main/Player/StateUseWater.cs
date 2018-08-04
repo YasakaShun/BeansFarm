@@ -8,15 +8,14 @@ namespace Player
 {
     class StateUseWater : IState
     {
-        public static void ChangeState(Beans player, GameObject waterBall, GameObject targetCell)
+        public static void ChangeState(Beans player, GameObject targetCell)
         {
-            player.ChangeState(new StateUseWater(player, waterBall, targetCell));
+            player.ChangeState(new StateUseWater(player, targetCell));
         }
 
-        private StateUseWater(Beans player, GameObject waterBall, GameObject targetCell)
+        private StateUseWater(Beans player, GameObject targetCell)
         {
             this.player = player;
-            this.waterBall = waterBall;
             this.targetCell = targetCell;
         }
 
@@ -43,18 +42,18 @@ namespace Player
 
             if (targetCell != null)
             {
-                if (waterBall != null)
+                if (player.hasWaterBall())
                 {
                     var cellScript = targetCell.GetComponent<Cell>();
                     cellScript.waterPower +=
-                        waterBall.GetComponent<WaterBall>().power;
+                        player.WaterBall.GetComponent<WaterBall>().Power;
                     if (30.0f < cellScript.waterPower)
                     {
                         var prefab = (GameObject)Resources.Load("Prefab/Main/unitychan");
                         UnityEngine.Object.Instantiate(prefab, player.transform);
                     }
-                    UnityEngine.Object.Destroy(waterBall);
-                    waterBall = null;
+                    UnityEngine.Object.Destroy(player.WaterBall);
+                    player.WaterBall = null;
                 }
                 targetCell = null;
 
@@ -62,16 +61,15 @@ namespace Player
             }
             else
             {
-                if (waterBall != null)
+                if (player.hasWaterBall())
                 {
-                    StateToCell.ChangeState(player, waterBall);
+                    StateToCell.ChangeState(player);
                 }
 
             }
         }
 
         private Beans player;
-        private GameObject waterBall;
         private GameObject targetCell;
     }
 }

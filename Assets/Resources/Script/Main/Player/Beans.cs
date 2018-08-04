@@ -8,6 +8,7 @@ namespace Player
 
     public class Beans : MonoBehaviour
     {
+        public GameObject WaterBall { get; set; }
         public NavMeshAgent Agent { get; private set; }
         private Animator Anim { get; set; }
         private IState state;
@@ -54,6 +55,11 @@ namespace Player
                 return true;
             }
             return false;
+        }
+
+        public bool hasWaterBall()
+        {
+            return WaterBall != null;
         }
 
         private void updateAnim()
