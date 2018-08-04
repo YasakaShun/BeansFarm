@@ -5,7 +5,7 @@ using UnityEngine;
 public class WaterBall : MonoBehaviour
 {
 
-    public float power;
+    public float power { get; set; }
 
 	// Use this for initialization
 	void Start () {

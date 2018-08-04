@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
-    public float waterPower = 0.0f;
+    public float waterPower { get; set; }
 
 	void Start()
     {
+        waterPower = 0.0f;
 	}
 	
 	void Update()

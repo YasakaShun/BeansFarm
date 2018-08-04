@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Fountain : MonoBehaviour
 {
-    private float power = 300.0f;
-    private const float MaxPower = 300.0f;
+    public float power { get; private set; }
+    public readonly float MaxPower = 300.0f;
 
     void Start()
     {
+        power = 100.0f;
+
+        StartCoroutine(UpdatePower());
     }
 
     void Update()
@@ -32,11 +35,11 @@ public class Fountain : MonoBehaviour
     /// 水分自動回復コルーチン。
     /// </summary>
     /// <returns></returns>
-    private IEnumerator updatePower()
+    private IEnumerator UpdatePower()
     {
         while (true)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
             power = Mathf.Min(power + 1.0f, MaxPower);
         }
     }
