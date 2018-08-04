@@ -163,6 +163,8 @@ public class Beans : MonoBehaviour
                 {
                     Instantiate(playerPrefab, this.transform);
                 }
+                Destroy(waterBall);
+                waterBall = null;
             }
             targetCell = null;
 
