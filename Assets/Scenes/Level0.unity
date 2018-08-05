@@ -3614,6 +3614,11 @@ Prefab:
       propertyPath: m_Name
       value: Cell (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 114835711663316508, guid: a438acd62f0e70f4fa9af9e783b4430d,
+        type: 2}
+      propertyPath: kind
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a438acd62f0e70f4fa9af9e783b4430d, type: 2}
   m_IsPrefabAsset: 0
@@ -14824,6 +14829,11 @@ Prefab:
       propertyPath: m_Name
       value: Cell (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 114835711663316508, guid: a438acd62f0e70f4fa9af9e783b4430d,
+        type: 2}
+      propertyPath: kind
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a438acd62f0e70f4fa9af9e783b4430d, type: 2}
   m_IsPrefabAsset: 0
@@ -19730,6 +19740,11 @@ Prefab:
     - target: {fileID: 1896569256740070, guid: a438acd62f0e70f4fa9af9e783b4430d, type: 2}
       propertyPath: m_Name
       value: Cell (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114835711663316508, guid: a438acd62f0e70f4fa9af9e783b4430d,
+        type: 2}
+      propertyPath: kind
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a438acd62f0e70f4fa9af9e783b4430d, type: 2}

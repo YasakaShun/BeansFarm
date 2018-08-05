@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Field
@@ -15,7 +16,7 @@ namespace Field
 
         public static GameObject GetRandomCell()
         {
-            var cells = GameObject.FindGameObjectsWithTag("Cell");
+            var cells = AllCells();
             if (cells.Length == 0)
             {
                 return null;
@@ -23,6 +24,32 @@ namespace Field
             return cells[Random.Range(0, cells.Length)];
         }
 
+        public static GameObject GetRandomFarm()
+        {
+            var cells = AllCells();
+            if (cells.Length == 0)
+            {
+                return null;
+            }
+
+            var farms = cells
+                .Where(x => x.GetComponent<Cell>().kind == Cell.Kind.Farm)
+                .ToArray();
+
+            if (farms.Any())
+            {
+                return farms[Random.Range(0, farms.Length)];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        private static GameObject[] AllCells()
+        {
+            return GameObject.FindGameObjectsWithTag("Cell");
+        }
     }
 
 }
