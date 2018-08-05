@@ -57,5 +57,11 @@ namespace Field
             state.OnStart();
         }
 
+        public GameObject createPlayer(Vector3 pos)
+        {
+            waterPower = 0.0f;
+            var prefab = PrefabManager.Player;
+            return UnityEngine.Object.Instantiate(prefab, pos, Quaternion.identity);
+        }
     }
 }

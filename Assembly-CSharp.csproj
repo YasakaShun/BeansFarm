@@ -76,10 +76,9 @@
     <Compile Include="Assets\Resources\Script\Main\FountainOld.cs" />
     <Compile Include="Assets\Resources\Script\Main\Player\Beans.cs" />
     <Compile Include="Assets\Resources\Script\Main\Player\IState.cs" />
-    <Compile Include="Assets\Resources\Script\Main\Player\StateGatherWater.cs" />
     <Compile Include="Assets\Resources\Script\Main\Player\StateTemplate.cs" />
     <Compile Include="Assets\Resources\Script\Main\Player\StateToCell.cs" />
-    <Compile Include="Assets\Resources\Script\Main\Player\StateToSource.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Player\StateToWaterBall.cs" />
     <Compile Include="Assets\Resources\Script\Main\Player\StateUseWater.cs" />
     <Compile Include="Assets\Resources\Script\Main\Player\StateWait.cs" />
     <Compile Include="Assets\Resources\Script\Main\Source.cs" />

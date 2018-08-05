@@ -47,11 +47,7 @@ namespace Player
 
         public bool isReached()
         {
-            if (Agent.remainingDistance <= Agent.stoppingDistance)
-            {
-                return true;
-            }
-            return false;
+            return Agent.remainingDistance <= Agent.stoppingDistance;
         }
 
         public bool hasWaterBall()

@@ -49,8 +49,7 @@ namespace Player
                         player.WaterBall.GetComponent<WaterBall>().Power;
                     if (30.0f < cellScript.waterPower)
                     {
-                        var prefab = PrefabManager.Player;
-                        UnityEngine.Object.Instantiate(prefab, player.transform);
+                        cellScript.createPlayer(player.transform.position);
                     }
                     UnityEngine.Object.Destroy(player.WaterBall);
                     player.WaterBall = null;

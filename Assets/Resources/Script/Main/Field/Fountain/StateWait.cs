@@ -39,11 +39,12 @@ namespace Field.Fountain
         /// <returns></returns>
         private IEnumerator createWaterBall()
         {
+            yield return new WaitForSeconds(1.0f);
             while (true)
             {
-                yield return new WaitForSeconds(5.0f);
                 // TODO: 空いてる場所にWaterBallを生む
                 createWaterBall(10.0f);
+                yield return new WaitForSeconds(5.0f);
             }
         }
 

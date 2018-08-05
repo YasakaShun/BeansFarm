@@ -37,8 +37,29 @@ namespace Player
 
         private IEnumerator wait()
         {
-            yield return new WaitForSeconds(1);
-            StateToSource.ChangeState(player);
+            while (true)
+            {
+                yield return new WaitForSeconds(1);
+
+                if (player.hasWaterBall())
+                {
+                    StateToCell.ChangeState(player);
+                    yield break;
+                }
+                else
+                {
+                    var waters = GameObject.FindGameObjectsWithTag("Item")
+                        .ToArray();
+
+                    if (waters.Any())
+                    {
+                        var target = waters[UnityEngine.Random.Range(0, waters.Length)];
+                        StateToWaterBall.ChangeState(player, target);
+
+                        yield break;
+                    }
+                }
+            }
         }
 
         Beans player;
