@@ -44,7 +44,7 @@ namespace Player
             {
                 if (player.hasWaterBall())
                 {
-                    var cellScript = targetCell.GetComponent<Cell>();
+                    var cellScript = targetCell.GetComponent<Field.Cell>();
                     cellScript.waterPower +=
                         player.WaterBall.GetComponent<WaterBall>().Power;
                     if (30.0f < cellScript.waterPower)

@@ -61,8 +61,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Resources\Script\Main\Cell.cs" />
-    <Compile Include="Assets\Resources\Script\Main\Field.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Field\Cell.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Field\FieldManager.cs" />
     <Compile Include="Assets\Resources\Script\Main\Fountain.cs" />
     <Compile Include="Assets\Resources\Script\Main\FountainGauge.cs" />
     <Compile Include="Assets\Resources\Script\Main\Player\Beans.cs" />

@@ -22,7 +22,7 @@ namespace Player
         {
             player.Agent.enabled = true;
 
-            targetCell = Field.GetRandomCell();
+            targetCell = Field.FieldManager.GetRandomCell();
             player.Agent.destination = targetCell.transform.position;
             player.Agent.stoppingDistance = 0;
         }
