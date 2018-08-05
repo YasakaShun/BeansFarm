@@ -49,9 +49,8 @@ namespace Player
 
         private GameObject createWaterBall(float power)
         {
-            var prefab = (GameObject)Resources.Load("Prefab/Main/WaterBall");
             var waterBall = UnityEngine.Object.Instantiate(
-                prefab,
+                PrefabManager.WaterBall,
                 player.transform.position + Vector3.up * 2,
                 Quaternion.identity,
                 player.transform

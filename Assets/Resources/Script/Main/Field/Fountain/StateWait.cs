@@ -54,10 +54,9 @@ namespace Field.Fountain
         /// <returns></returns>
         private GameObject createWaterBall(float power)
         {
-            var prefab = (GameObject)Resources.Load("Prefab/Main/WaterBall");
             var offs = Quaternion.AngleAxis(UnityEngine.Random.Range(0.0f, 360.0f), Vector3.up) * Vector3.forward;
             var waterBall = UnityEngine.Object.Instantiate(
-                prefab,
+                PrefabManager.WaterBall,
                 cell.transform.position + Vector3.up + offs,
                 Quaternion.identity
                 );

@@ -20,8 +20,7 @@ namespace Field.Farm
 
         public void OnStart()
         {
-            var material = (Material)Resources.Load("Material/Main/Field/CellFarm");
-            cell.GetComponent<MeshRenderer>().material = material;
+            cell.GetComponent<MeshRenderer>().material = PrefabManager.FarmMaterial;
             StateWait.ChangeState(cell);
         }
 
