@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FountainGauge : MonoBehaviour
+public class FarmGauge : MonoBehaviour
 {
-    private FountainOld fountain;
+    private Field.Cell cell;
     private Slider slider;
 
 	void Start()
     {
-        fountain = this.GetComponentInParent<FountainOld>();
+        cell = this.GetComponentInParent<Field.Cell>();
         slider = transform.Find("Bar").GetComponent<Slider>();
 
-        Debug.Assert(fountain != null);
+        Debug.Assert(cell != null);
+        Debug.Assert(cell.kind == Field.Cell.Kind.Farm);
         Debug.Assert(slider != null);
 
         UpdateValue();
@@ -27,6 +28,6 @@ public class FountainGauge : MonoBehaviour
 
     private void UpdateValue()
     {
-        slider.value = fountain.power / fountain.MaxPower;
+        slider.value = cell.waterPower / Field.Farm.Constant.MaxWaterPower;
     }
 }
