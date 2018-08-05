@@ -13,7 +13,7 @@ namespace Player
             player.ChangeState(new StateWait(player));
         }
 
-        public StateWait(Beans player)
+        private StateWait(Beans player)
         {
             this.player = player;
         }
