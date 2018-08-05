@@ -74,7 +74,6 @@
     <Compile Include="Assets\Resources\Script\Main\Field\IState.cs" />
     <Compile Include="Assets\Resources\Script\Main\Field\Normal\StateInit.cs" />
     <Compile Include="Assets\Resources\Script\Main\Field\Normal\StateWait.cs" />
-    <Compile Include="Assets\Resources\Script\Main\FountainOld.cs" />
     <Compile Include="Assets\Resources\Script\Main\Player\Beans.cs" />
     <Compile Include="Assets\Resources\Script\Main\Player\IState.cs" />
     <Compile Include="Assets\Resources\Script\Main\Player\StateTemplate.cs" />
@@ -82,7 +81,6 @@
     <Compile Include="Assets\Resources\Script\Main\Player\StateToWaterBall.cs" />
     <Compile Include="Assets\Resources\Script\Main\Player\StateUseWater.cs" />
     <Compile Include="Assets\Resources\Script\Main\Player\StateWait.cs" />
-    <Compile Include="Assets\Resources\Script\Main\Source.cs" />
     <Compile Include="Assets\Resources\Script\Main\WaterBall.cs" />
     <Compile Include="Assets\Resources\Script\PrefabManager.cs" />
     <Compile Include="Assets\Resources\Script\Title\TitleGameSystem.cs" />

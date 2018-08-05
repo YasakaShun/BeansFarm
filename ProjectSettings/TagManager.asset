@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Item
   - Cell
-  - Source
   layers:
   - Default
   - TransparentFX
