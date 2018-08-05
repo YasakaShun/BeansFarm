@@ -20,8 +20,7 @@ namespace Player
 
         public void OnStart()
         {
-            player.Agent.enabled = false;
-
+            player.Agent.ResetPath();
             player.StartCoroutine(wait());
         }
 
@@ -49,6 +48,7 @@ namespace Player
                 else
                 {
                     var waters = GameObject.FindGameObjectsWithTag("Item")
+                        .Where(x => x.GetComponent<WaterBall>().Parent == null)
                         .ToArray();
 
                     if (waters.Any())

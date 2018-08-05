@@ -21,8 +21,6 @@ namespace Player
 
         public void OnStart()
         {
-            player.Agent.enabled = false;
-
             player.StartCoroutine(useWater());
         }
 
@@ -38,7 +36,7 @@ namespace Player
 
         private IEnumerator useWater()
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
 
             if (targetCell != null)
             {
@@ -56,13 +54,17 @@ namespace Player
                 }
                 targetCell = null;
 
+                yield return new WaitForSeconds(0.5f);
+
                 StateWait.ChangeState(player);
+                yield break;
             }
             else
             {
                 if (player.hasWaterBall())
                 {
                     StateToCell.ChangeState(player);
+                    yield break;
                 }
 
             }

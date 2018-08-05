@@ -20,11 +20,9 @@ namespace Player
 
         public void OnStart()
         {
-            player.Agent.enabled = true;
-
             targetCell = Field.FieldManager.GetRandomFarm();
             player.Agent.destination = targetCell.transform.position;
-            player.Agent.stoppingDistance = 0;
+            player.Agent.stoppingDistance = 0.2f;
         }
 
         public void OnEnd()

@@ -21,11 +21,10 @@ namespace Player
 
         public void OnStart()
         {
-            player.Agent.enabled = true;
-
             var pos = targetWaterBall.transform.position;
             pos.y = 0;
             player.Agent.destination = pos;
+            player.Agent.stoppingDistance = 0.5f;
         }
 
         public void OnEnd()
