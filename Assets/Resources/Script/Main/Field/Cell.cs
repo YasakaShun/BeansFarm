@@ -32,6 +32,7 @@ namespace Field
                     Fountain.StateInit.ChangeState(this);
                     break;
                 default:
+                    Debug.Assert(false, "[Cell] unknown state.");
                     break;
             }
         }
