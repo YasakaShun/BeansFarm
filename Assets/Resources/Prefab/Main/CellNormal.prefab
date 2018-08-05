@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65154595292735838}
   - component: {fileID: 114835711663316508}
   m_Layer: 0
-  m_Name: Cell
+  m_Name: CellNormal
   m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,3 +108,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac9956dc725cc34491c8050a41ca3e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waterPower: 0
+  kind: 0
