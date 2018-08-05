@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23543311605183844}
   - component: {fileID: 65776643435060980}
   - component: {fileID: 114213875024269994}
+  - component: {fileID: 208070663347042600}
   m_Layer: 0
   m_Name: CellFountain
   m_TagString: Cell
@@ -110,3 +111,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterPower: 0
   kind: 2
+--- !u!208 &208070663347042600
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1949614276955474}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
