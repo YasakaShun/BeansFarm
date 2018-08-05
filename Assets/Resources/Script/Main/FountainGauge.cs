@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class FountainGauge : MonoBehaviour
 {
-    private Fountain fountain;
+    private FountainOld fountain;
     private Slider slider;
 
 	void Start()
     {
-        fountain = this.GetComponentInParent<Fountain>();
+        fountain = this.GetComponentInParent<FountainOld>();
         slider = transform.Find("Bar").GetComponent<Slider>();
 
         Debug.Assert(fountain != null);

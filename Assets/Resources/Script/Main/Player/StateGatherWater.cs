@@ -41,7 +41,7 @@ namespace Player
 
             Debug.Assert(fountain != null);
 
-            var power = fountain.GetComponent<Fountain>().GetPower();
+            var power = fountain.GetComponent<FountainOld>().GetPower();
             player.WaterBall = createWaterBall(power);
 
             StateToCell.ChangeState(player);

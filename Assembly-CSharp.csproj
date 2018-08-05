@@ -62,9 +62,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Resources\Script\Main\Field\Cell.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Field\Farm\StateInit.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Field\Farm\StateWait.cs" />
     <Compile Include="Assets\Resources\Script\Main\Field\FieldManager.cs" />
-    <Compile Include="Assets\Resources\Script\Main\Fountain.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Field\Fountain\StateInit.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Field\Fountain\StateWait.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Field\IState.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Field\Normal\StateInit.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Field\Normal\StateWait.cs" />
     <Compile Include="Assets\Resources\Script\Main\FountainGauge.cs" />
+    <Compile Include="Assets\Resources\Script\Main\FountainOld.cs" />
     <Compile Include="Assets\Resources\Script\Main\Player\Beans.cs" />
     <Compile Include="Assets\Resources\Script\Main\Player\IState.cs" />
     <Compile Include="Assets\Resources\Script\Main\Player\StateGatherWater.cs" />

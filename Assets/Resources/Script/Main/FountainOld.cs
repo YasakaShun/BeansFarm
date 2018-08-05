@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fountain : MonoBehaviour
+public class FountainOld : MonoBehaviour
 {
     public float power { get; private set; }
     public readonly float MaxPower = 300.0f;
