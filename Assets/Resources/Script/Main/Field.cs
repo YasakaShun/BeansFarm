@@ -19,24 +19,5 @@ public class Field : MonoBehaviour
         }
         return cells[Random.Range(0, cells.Length)];
     }
-
-    void Start()
-    {
-        // DummyFloor 非表示
-        GetComponentInChildren<MeshRenderer>().enabled = false;
-        // 床生成
-        float hw = width * CellWidth * 0.5f;
-        float hd = depth * CellWidth * 0.5f;
-        for (float w = -hw + CellWidth * 0.5f; w < hw; w += CellWidth)
-        {
-            for (float d = -hd + CellWidth * 0.5f; d < hd; d += CellWidth)
-            {
-                var pos = new Vector3(w, CellWidth * -0.5f, d);
-                var cell = Instantiate(prefab, pos, new Quaternion());
-                cell.transform.parent = this.transform;
-            }
-
-        }
-	}
 	
 }
