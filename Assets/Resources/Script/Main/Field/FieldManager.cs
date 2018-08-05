@@ -14,25 +14,13 @@ namespace Field
 
         private const float CellWidth = 1.0f;
 
-        public static GameObject GetRandomCell()
-        {
-            var cells = AllCells();
-            if (cells.Length == 0)
-            {
-                return null;
-            }
-            return cells[Random.Range(0, cells.Length)];
-        }
-
+        /// <summary>
+        /// ランダムな畑セルを返す
+        /// </summary>
+        /// <returns></returns>
         public static GameObject GetRandomFarm()
         {
-            var cells = AllCells();
-            if (cells.Length == 0)
-            {
-                return null;
-            }
-
-            var farms = cells
+            var farms = AllCells()
                 .Where(x => x.GetComponent<Cell>().kind == Cell.Kind.Farm)
                 .ToArray();
 

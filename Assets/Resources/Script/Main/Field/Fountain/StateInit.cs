@@ -20,6 +20,7 @@ namespace Field.Fountain
 
         public void OnStart()
         {
+            cell.custom = new Custom();
             var material = (Material)Resources.Load("Material/Main/Field/CellFountain");
             cell.GetComponent<MeshRenderer>().material = material;
             StateWait.ChangeState(cell);

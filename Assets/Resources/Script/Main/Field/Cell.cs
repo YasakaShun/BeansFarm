@@ -10,6 +10,7 @@ namespace Field
         public Kind kind;
 
         private IState state;
+        public ICustom custom { get; set; }
 
         public enum Kind
         {
