@@ -28,7 +28,23 @@ namespace Player
 
         void FixedUpdate()
         {
-            updateAnim();
+            UpdateAnim();
+        }
+
+        private void OnTriggerEnter(Collider hit)
+        {
+            if (hit.CompareTag("Item"))
+            {
+                var waterBall = hit.gameObject.GetComponent<WaterBall>();
+                if (waterBall != null && waterBall.Parent == null)
+                {
+                    waterBall.Parent = this;
+                    this.WaterBall = waterBall.gameObject;
+                    waterBall.transform.position = this.transform.position + Vector3.up * 2;
+                    waterBall.transform.rotation = Quaternion.identity;
+                    waterBall.transform.parent = this.transform;
+                }
+            }
         }
 
         /// <summary>
@@ -55,7 +71,7 @@ namespace Player
             return WaterBall != null;
         }
 
-        private void updateAnim()
+        private void UpdateAnim()
         {
             // NavMesh での移動速度にあわせてモーションを変える
             var vel = Agent.velocity;
