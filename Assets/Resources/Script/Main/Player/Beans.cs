@@ -76,6 +76,21 @@ namespace Player
             return Agent.remainingDistance <= Agent.stoppingDistance;
         }
 
+        public bool IsReachable(Vector3 pos)
+        {
+            var path = new UnityEngine.AI.NavMeshPath();
+            if (!Agent.CalculatePath(pos, path))
+            {
+                return false;
+            }
+            if (path.status != UnityEngine.AI.NavMeshPathStatus.PathComplete)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public bool hasWaterBall()
         {
             return WaterBall != null;
