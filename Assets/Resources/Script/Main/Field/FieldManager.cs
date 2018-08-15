@@ -18,20 +18,11 @@ namespace Field
         /// ランダムな畑セルを返す
         /// </summary>
         /// <returns></returns>
-        public static GameObject GetRandomFarm()
+        public static GameObject[] AllFarms()
         {
-            var farms = AllCells()
+            return AllCells()
                 .Where(x => x.GetComponent<Cell>().kind == Cell.Kind.Farm)
                 .ToArray();
-
-            if (farms.Any())
-            {
-                return farms[Random.Range(0, farms.Length)];
-            }
-            else
-            {
-                return null;
-            }
         }
 
         private static GameObject[] AllCells()
