@@ -8,6 +8,24 @@ namespace Player
 {
     class StateToWaterBall : IState
     {
+        public static bool TryToChangeState(Beans player)
+        {
+            // 到達可能なWaterBallを目指す
+            var waters = GameObject.FindGameObjectsWithTag("Item")
+                .Where(x => x.GetComponent<WaterBall>().Parent == null)
+                .Where(x => player.IsReachable(x.transform.position))
+                .ToArray();
+
+            if (waters.Any())
+            {
+                var target = waters[UnityEngine.Random.Range(0, waters.Length)];
+                StateToWaterBall.ChangeState(player, target);
+                return true;
+            }
+
+            return false;
+        }
+
         public static void ChangeState(Beans player, GameObject waterBall)
         {
             player.ChangeState(new StateToWaterBall(player, waterBall));

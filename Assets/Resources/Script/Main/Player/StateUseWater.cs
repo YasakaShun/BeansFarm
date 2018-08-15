@@ -56,12 +56,8 @@ namespace Player
             }
             else
             {
-                if (player.hasWaterBall())
-                {
-                    StateToCell.ChangeState(player);
-                    yield break;
-                }
-
+                StateWait.ChangeState(player);
+                yield break;
             }
         }
 

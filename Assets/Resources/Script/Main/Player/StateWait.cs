@@ -42,22 +42,15 @@ namespace Player
 
                 if (player.hasWaterBall())
                 {
-                    StateToCell.ChangeState(player);
-                    yield break;
+                    if (StateToCell.TryToChangeState(player))
+                    {
+                        yield break;
+                    }
                 }
                 else
                 {
-                    // 到達可能なWaterBallを目指す
-                    var waters = GameObject.FindGameObjectsWithTag("Item")
-                        .Where(x => x.GetComponent<WaterBall>().Parent == null)
-                        .Where(x => player.IsReachable(x.transform.position))
-                        .ToArray();
-
-                    if (waters.Any())
+                    if (StateToWaterBall.TryToChangeState(player))
                     {
-                        var target = waters[UnityEngine.Random.Range(0, waters.Length)];
-                        StateToWaterBall.ChangeState(player, target);
-
                         yield break;
                     }
                 }

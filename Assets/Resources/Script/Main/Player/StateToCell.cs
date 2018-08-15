@@ -8,34 +8,38 @@ namespace Player
 {
     class StateToCell : IState
     {
-        public static void ChangeState(Beans player)
+        public static bool TryToChangeState(Beans player)
         {
-            player.ChangeState(new StateToCell(player));
-        }
-
-        private StateToCell(Beans player)
-        {
-            this.player = player;
-        }
-
-        public void OnStart()
-        {
+            // 移動可能な畑を目指す
             var farms = Field.FieldManager.AllFarms()
                 .Where(x => player.IsReachable(x.transform.position))
                 .ToArray();
 
             if (farms.Any())
             {
-                targetCell = farms[UnityEngine.Random.Range(0, farms.Length)];
-                player.Agent.destination = targetCell.transform.position;
-                player.Agent.stoppingDistance = 0.3f;
-                return;
+                var targetCell = farms[UnityEngine.Random.Range(0, farms.Length)];
+                StateToCell.ChangeState(player, targetCell);
+                return true;
             }
-            else
-            {
-                StateWait.ChangeState(player);
-                return;
-            }
+
+            return false;
+        }
+
+        public static void ChangeState(Beans player, GameObject targetCell)
+        {
+            player.ChangeState(new StateToCell(player, targetCell));
+        }
+
+        private StateToCell(Beans player, GameObject targetCell)
+        {
+            this.player = player;
+            this.targetCell = targetCell;
+        }
+
+        public void OnStart()
+        {
+            player.Agent.destination = targetCell.transform.position;
+            player.Agent.stoppingDistance = 0.3f;
         }
 
         public void OnEnd()
