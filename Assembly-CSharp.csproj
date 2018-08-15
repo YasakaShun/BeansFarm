@@ -75,10 +75,16 @@
     <Compile Include="Assets\Resources\Script\Main\Field\IState.cs" />
     <Compile Include="Assets\Resources\Script\Main\Field\Normal\StateInit.cs" />
     <Compile Include="Assets\Resources\Script\Main\Field\Normal\StateWait.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Obstacle\IState.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Obstacle\Obj.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Obstacle\StateInit.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Obstacle\StateWait.cs" />
     <Compile Include="Assets\Resources\Script\Main\Player\Beans.cs" />
     <Compile Include="Assets\Resources\Script\Main\Player\IState.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Player\StateAttack.cs" />
     <Compile Include="Assets\Resources\Script\Main\Player\StateTemplate.cs" />
     <Compile Include="Assets\Resources\Script\Main\Player\StateToCell.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Player\StateToObstacle.cs" />
     <Compile Include="Assets\Resources\Script\Main\Player\StateToWaterBall.cs" />
     <Compile Include="Assets\Resources\Script\Main\Player\StateUseWater.cs" />
     <Compile Include="Assets\Resources\Script\Main\Player\StateWait.cs" />

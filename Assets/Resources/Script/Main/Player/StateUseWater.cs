@@ -21,6 +21,7 @@ namespace Player
 
         public void OnStart()
         {
+            player.Agent.ResetPath();
             player.StartCoroutine(useWater());
         }
 

@@ -49,9 +49,26 @@ namespace Player
                 }
                 else
                 {
-                    if (StateToWaterBall.TryToChangeState(player))
+                    bool toObstacle = (0.8f <= UnityEngine.Random.Range(0.0f, 1.0f));
+                    if (toObstacle)
                     {
-                        yield break;
+                        // 障害物の破壊へ
+                        if (StateToObstacle.TryToChangeState(player))
+                        {
+                            yield break;
+                        }
+                        if (StateToWaterBall.TryToChangeState(player))
+                        {
+                            yield break;
+                        }
+                    }
+                    else
+                    {
+                        // 水分取得へ
+                        if (StateToWaterBall.TryToChangeState(player))
+                        {
+                            yield break;
+                        }
                     }
                 }
             }
