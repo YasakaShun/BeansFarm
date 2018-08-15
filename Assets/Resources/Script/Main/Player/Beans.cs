@@ -9,14 +9,18 @@ namespace Player
     public class Beans : MonoBehaviour
     {
         public GameObject WaterBall { get; set; }
+        public int Life { get; set; }
         public NavMeshAgent Agent { get; private set; }
         private Animator Anim { get; set; }
         private IState state;
 
         void Start()
         {
+            Life = 50;
             Agent = GetComponent<NavMeshAgent>();
             Anim = GetComponent<Animator>();
+
+            StartCoroutine(UpdateLife());
 
             StateWait.ChangeState(this);
         }
@@ -82,6 +86,31 @@ namespace Player
             // NavMesh での移動速度にあわせてモーションを変える
             var vel = Agent.velocity;
             Anim.SetFloat("Speed", vel.magnitude);
+        }
+
+        /// <summary>
+        /// 体力の自動減少
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator UpdateLife()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(2);
+                this.Life -= 1;
+
+                // Life 0 で死亡
+                if (this.Life <= 0)
+                {
+                    // TODO: 死亡演出
+                    if (this.hasWaterBall())
+                    {
+                        Destroy(this.WaterBall);
+                    }
+                    Destroy(this.gameObject);
+                    yield break;
+                }
+            }
         }
 
     }

@@ -54,11 +54,13 @@ namespace Field.Farm
 
         private GameObject CreatePlayer()
         {
-            cell.waterPower = 0.0f;
             var prefab = PrefabManager.Player;
             var pos = cell.transform.position;
             pos.y = 0.0f;
-            return UnityEngine.Object.Instantiate(prefab, pos, Quaternion.identity);
+            var player = UnityEngine.Object.Instantiate(prefab, pos, Quaternion.identity);
+            player.GetComponent<Player.Beans>().Life = (int)cell.waterPower;
+            cell.waterPower = 0.0f;
+            return player;
         }
 
         Cell cell;
