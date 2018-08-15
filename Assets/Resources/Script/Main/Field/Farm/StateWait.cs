@@ -29,7 +29,12 @@ namespace Field.Farm
 
         public void Update()
         {
-
+            if (cell.IsReady)
+            {
+                cell.IsReady = false;
+                StateGrow.ChangeState(cell);
+                return;
+            }
         }
 
         Cell cell;

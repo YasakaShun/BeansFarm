@@ -33,8 +33,14 @@ namespace Player
 
         private void OnTriggerEnter(Collider hit)
         {
+            // アイテムとの衝突判定
             if (hit.CompareTag("Item"))
             {
+                if (this.hasWaterBall())
+                {
+                    return;
+                }
+
                 var waterBall = hit.gameObject.GetComponent<WaterBall>();
                 if (waterBall != null && waterBall.Parent == null)
                 {

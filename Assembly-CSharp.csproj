@@ -64,6 +64,7 @@
     <Compile Include="Assets\Resources\Script\Main\FarmGauge.cs" />
     <Compile Include="Assets\Resources\Script\Main\Field\Cell.cs" />
     <Compile Include="Assets\Resources\Script\Main\Field\Farm\Constant.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Field\Farm\StateGrow.cs" />
     <Compile Include="Assets\Resources\Script\Main\Field\Farm\StateInit.cs" />
     <Compile Include="Assets\Resources\Script\Main\Field\Farm\StateWait.cs" />
     <Compile Include="Assets\Resources\Script\Main\Field\FieldManager.cs" />

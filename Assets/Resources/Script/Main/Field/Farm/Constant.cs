@@ -7,6 +7,7 @@ namespace Field.Farm
 {
     class Constant
     {
-        public const float MaxWaterPower = 30.0f;
+        public const float GenWaterPower = 30.0f;
+        public const float MaxWaterPower = 100.0f;
     }
 }

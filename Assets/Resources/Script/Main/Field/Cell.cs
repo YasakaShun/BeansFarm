@@ -12,11 +12,18 @@ namespace Field
         private IState state;
         public ICustom custom { get; set; }
 
+        public bool IsReady { get; set; }
+
         public enum Kind
         {
             Normal,   // 通常
             Farm,     // 畑
             Fountain, // 池
+        }
+
+        private void Awake()
+        {
+            IsReady = false;
         }
 
         void Start()
@@ -40,7 +47,7 @@ namespace Field
 
         void Update()
         {
-
+            state.Update();
         }
 
         /// <summary>
@@ -57,11 +64,11 @@ namespace Field
             state.OnStart();
         }
 
-        public GameObject createPlayer(Vector3 pos)
+        public void GiveWater(WaterBall waterBall)
         {
-            waterPower = 0.0f;
-            var prefab = PrefabManager.Player;
-            return UnityEngine.Object.Instantiate(prefab, pos, Quaternion.identity);
+            this.waterPower += waterBall.Power;
+            IsReady = true;
         }
+
     }
 }
