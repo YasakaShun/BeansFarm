@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,14 +10,13 @@ namespace Player
     public class Beans : MonoBehaviour
     {
         public GameObject WaterBall { get; set; }
-        public int Life { get; set; }
+        public int Life;
         public NavMeshAgent Agent { get; private set; }
         private Animator Anim { get; set; }
         private IState state;
 
         void Start()
         {
-            Life = 50;
             Agent = GetComponent<NavMeshAgent>();
             Anim = GetComponent<Animator>();
 
@@ -96,6 +96,23 @@ namespace Player
         {
             while (true)
             {
+                // カラー更新
+                {
+                    var materials = this.GetComponentsInChildren<SkinnedMeshRenderer>()
+                        .Select(x => x.material)
+                        .ToArray();
+
+                    foreach (var material in materials)
+                    {
+                        var color = material.color;
+                        float rate = this.Life / 100.0f;
+                        float rate2 = Mathf.Sin(Mathf.Deg2Rad * 90.0f * rate);
+                        color.g = rate2;
+                        color.b = rate2;
+                        material.color = color;
+                    }
+                }
+
                 yield return new WaitForSeconds(2);
                 this.Life -= 1;
 
