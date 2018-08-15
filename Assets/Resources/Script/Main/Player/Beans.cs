@@ -12,7 +12,7 @@ namespace Player
         public GameObject WaterBall { get; set; }
         public int Life;
         public NavMeshAgent Agent { get; private set; }
-        private Animator Anim { get; set; }
+        public Animator Anim { get; private set; }
         private IState state;
 
         void Start()

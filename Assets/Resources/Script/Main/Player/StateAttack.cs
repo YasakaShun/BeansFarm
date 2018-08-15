@@ -27,12 +27,15 @@ namespace Player
 
         public void OnEnd()
         {
-
+            player.Anim.SetBool("Jump", false);
         }
 
         public void Update()
         {
-
+            // Speed を設定しないとジャンプモーションしてくれない。
+            // TODO: 正式対応
+            player.Anim.SetFloat("Speed", 1.0f);
+            player.Anim.SetBool("Jump", true);
         }
 
         private IEnumerator Attack()
