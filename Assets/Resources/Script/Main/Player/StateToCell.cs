@@ -55,6 +55,15 @@ namespace Player
             }
         }
 
+        public bool CanReceiveSignal(Signal signal)
+        {
+            return false;
+        }
+
+        public void OnReceiveSignal(Signal signal, GameObject gameObject)
+        {
+        }
+
         private Beans player;
         private GameObject targetCell;
     }

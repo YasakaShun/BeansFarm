@@ -21,12 +21,15 @@ namespace Player
 
         public void OnStart()
         {
+            mCoroutine = Attack();
+
             player.Agent.ResetPath();
-            player.StartCoroutine(Attack());
+            player.StartCoroutine(mCoroutine);
         }
 
         public void OnEnd()
         {
+            player.StopCoroutine(mCoroutine);
             player.Anim.SetBool("Jump", false);
         }
 
@@ -36,6 +39,15 @@ namespace Player
             // TODO: 正式対応
             player.Anim.SetFloat("Speed", 1.0f);
             player.Anim.SetBool("Jump", true);
+        }
+
+        public bool CanReceiveSignal(Signal signal)
+        {
+            return false;
+        }
+
+        public void OnReceiveSignal(Signal signal, GameObject gameObject)
+        {
         }
 
         private IEnumerator Attack()
@@ -67,5 +79,6 @@ namespace Player
 
         private Beans player;
         private GameObject targetObstacle;
+        private IEnumerator mCoroutine;
     }
 }

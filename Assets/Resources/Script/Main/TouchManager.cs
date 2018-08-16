@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TouchManager
@@ -38,10 +39,40 @@ public class TouchManager
                 return;
             }
 
-            var pos = hit.point;
-            Debug.Log(pos);
+            if (hit.collider.gameObject.CompareTag("Item"))
+            {
+                var waterBall = hit.collider.gameObject.GetComponent<WaterBall>();
+                if (waterBall.Parent != null)
+                {
+                    return;
+                }
 
-            //var players = AllPlayer();
+                var signal = Player.Signal.ToWaterBall;
+                var players = Player.Manager.AllPlayer()
+                    .Where(x => x.CanReceiveSignal(signal))
+                    .Where(x => x.IsReachable(waterBall.transform.position))
+                    .ToArray();
+                if (!players.Any())
+                {
+                    return;
+                }
+
+                players.First().ReceiveSignal(signal, waterBall.gameObject);
+            }
+            else if (hit.collider.gameObject.CompareTag("Obstacle"))
+            {
+                var signal = Player.Signal.ToObstacle;
+                var players = Player.Manager.AllPlayer()
+                    .Where(x => x.CanReceiveSignal(signal))
+                    //.Where(x => x.IsReachable(waterBall.transform.position))
+                    .ToArray();
+                if (!players.Any())
+                {
+                    return;
+                }
+
+                players.First().ReceiveSignal(signal, hit.collider.gameObject);
+            }
         }
     }
 

@@ -1,17 +1,18 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnityEngine;
+using Obstacle;
+using System.Linq;
 
-namespace Player
+namespace Obstacle
 {
+
     public class Manager
     {
-        public static Beans[] AllPlayer()
+        public Obj[] AllObstacle()
         {
-            return GameObject.FindGameObjectsWithTag("Player")
-                .Select(x => x.GetComponent<Beans>())
+            return GameObject.FindGameObjectsWithTag("Obstacle")
+                .Select(x => x.GetComponent<Obj>())
                 .ToArray();
         }
 
@@ -22,18 +23,17 @@ namespace Player
 
         public void Awake()
         {
-
         }
 
         public void Start()
         {
-
         }
 
         public void Update()
         {
         }
 
-        private BeansFarm.Manager mManager;
+        BeansFarm.Manager mManager;
     }
+
 }

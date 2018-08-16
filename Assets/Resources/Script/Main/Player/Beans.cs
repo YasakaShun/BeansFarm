@@ -17,6 +17,7 @@ namespace Player
 
         void Start()
         {
+            WaterBall = null;
             Agent = GetComponent<NavMeshAgent>();
             Anim = GetComponent<Animator>();
 
@@ -94,6 +95,21 @@ namespace Player
         public bool hasWaterBall()
         {
             return WaterBall != null;
+        }
+
+        public bool CanReceiveSignal(Signal signal)
+        {
+            if (state == null)
+            {
+                return false;
+            }
+            return state.CanReceiveSignal(signal);
+        }
+
+        public void ReceiveSignal(Signal signal, GameObject gameObject)
+        {
+            Debug.Assert(CanReceiveSignal(signal));
+            state.OnReceiveSignal(signal, gameObject);
         }
 
         private void UpdateAnim()

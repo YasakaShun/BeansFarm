@@ -21,18 +21,29 @@ namespace Player
 
         public void OnStart()
         {
+            mCoroutine = useWater();
+
             player.Agent.ResetPath();
-            player.StartCoroutine(useWater());
+            player.StartCoroutine(mCoroutine);
         }
 
         public void OnEnd()
         {
-
+            player.StopCoroutine(mCoroutine);
         }
 
         public void Update()
         {
 
+        }
+
+        public bool CanReceiveSignal(Signal signal)
+        {
+            return false;
+        }
+
+        public void OnReceiveSignal(Signal signal, GameObject gameObject)
+        {
         }
 
         private IEnumerator useWater()
@@ -64,5 +75,6 @@ namespace Player
 
         private Beans player;
         private GameObject targetCell;
+        private IEnumerator mCoroutine;
     }
 }

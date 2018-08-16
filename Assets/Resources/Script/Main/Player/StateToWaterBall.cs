@@ -47,7 +47,6 @@ namespace Player
 
         public void OnEnd()
         {
-
         }
 
         public void Update()
@@ -74,6 +73,37 @@ namespace Player
             {
                 StateWait.ChangeState(player);
                 return;
+            }
+        }
+
+        public bool CanReceiveSignal(Signal signal)
+        {
+            switch (signal)
+            {
+                case Signal.ToFarm:
+                    return false;
+                case Signal.ToObstacle:
+                case Signal.ToWaterBall:
+                    return true;
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+
+        public void OnReceiveSignal(Signal signal, GameObject gameObject)
+        {
+            switch (signal)
+            {
+                case Signal.ToFarm:
+                    break;
+                case Signal.ToObstacle:
+                    StateToObstacle.ChangeState(player, gameObject);
+                    return;
+                case Signal.ToWaterBall:
+                    StateToWaterBall.ChangeState(player, gameObject);
+                    return;
+                default:
+                    throw new NotImplementedException();
             }
         }
 

@@ -20,18 +20,60 @@ namespace Player
 
         public void OnStart()
         {
+            mCoroutine = wait();
+
             player.Agent.ResetPath();
-            player.StartCoroutine(wait());
+            player.StartCoroutine(mCoroutine);
         }
 
         public void OnEnd()
         {
-
+            player.StopCoroutine(mCoroutine);
         }
 
         public void Update()
         {
 
+        }
+
+        public bool CanReceiveSignal(Signal signal)
+        {
+            switch (signal)
+            {
+                case Signal.ToFarm:
+                    if (player.hasWaterBall())
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case Signal.ToObstacle:
+                case Signal.ToWaterBall:
+                    return true;
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+
+        public void OnReceiveSignal(Signal signal, GameObject gameObject)
+        {
+            switch (signal)
+            {
+                case Signal.ToFarm:
+                    Debug.Assert(player.hasWaterBall());
+                    StateToCell.ChangeState(player, gameObject);
+                    return;
+                case Signal.ToObstacle:
+                    StateToObstacle.ChangeState(player, gameObject);
+                    return;
+                case Signal.ToWaterBall:
+                    StateToWaterBall.ChangeState(player, gameObject);
+                    return;
+                default:
+                    throw new NotImplementedException();
+            }
         }
 
         private IEnumerator wait()
@@ -74,6 +116,7 @@ namespace Player
             }
         }
 
-        Beans player;
+        private Beans player;
+        private IEnumerator mCoroutine;
     }
 }
