@@ -75,7 +75,7 @@
     <Compile Include="Assets\Resources\Script\Main\Field\IState.cs" />
     <Compile Include="Assets\Resources\Script\Main\Field\Normal\StateInit.cs" />
     <Compile Include="Assets\Resources\Script\Main\Field\Normal\StateWait.cs" />
-    <Compile Include="Assets\Resources\Script\Main\Manager.cs" />
+    <Compile Include="Assets\Resources\Script\Main\GameManager.cs" />
     <Compile Include="Assets\Resources\Script\Main\Obstacle\IState.cs" />
     <Compile Include="Assets\Resources\Script\Main\Obstacle\Manager.cs" />
     <Compile Include="Assets\Resources\Script\Main\Obstacle\Obj.cs" />

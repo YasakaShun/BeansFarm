@@ -15,7 +15,7 @@ namespace Player
                 .ToArray();
         }
 
-        public Manager(BeansFarm.Manager manager)
+        public Manager(BeansFarm.GameManager manager)
         {
             mManager = manager;
         }
@@ -34,6 +34,6 @@ namespace Player
         {
         }
 
-        private BeansFarm.Manager mManager;
+        private BeansFarm.GameManager mManager;
     }
 }

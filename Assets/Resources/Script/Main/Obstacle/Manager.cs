@@ -16,7 +16,7 @@ namespace Obstacle
                 .ToArray();
         }
 
-        public Manager(BeansFarm.Manager manager)
+        public Manager(BeansFarm.GameManager manager)
         {
             mManager = manager;
         }
@@ -33,7 +33,7 @@ namespace Obstacle
         {
         }
 
-        BeansFarm.Manager mManager;
+        BeansFarm.GameManager mManager;
     }
 
 }

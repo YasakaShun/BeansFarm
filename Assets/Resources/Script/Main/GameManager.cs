@@ -5,7 +5,7 @@ using UnityEngine;
 namespace BeansFarm
 {
 
-    public class Manager : MonoBehaviour
+    public class GameManager : MonoBehaviour
     {
         private static int MouseLeft() { return 0; }
         private static int MouseRight() { return 1; }

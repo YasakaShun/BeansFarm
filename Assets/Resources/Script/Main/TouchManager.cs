@@ -9,7 +9,7 @@ public class TouchManager
     private static int MouseRight() { return 1; }
     private static int MouseMiddle() { return 2; }
 
-    public TouchManager(BeansFarm.Manager manager)
+    public TouchManager(BeansFarm.GameManager manager)
     {
         mManager = manager;
     }
@@ -76,5 +76,5 @@ public class TouchManager
         }
     }
 
-    private BeansFarm.Manager mManager;
+    private BeansFarm.GameManager mManager;
 }
