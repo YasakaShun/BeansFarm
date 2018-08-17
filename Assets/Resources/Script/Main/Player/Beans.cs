@@ -144,7 +144,7 @@ namespace Player
                     }
                 }
 
-                yield return new WaitForSeconds(2);
+                yield return new WaitForSeconds(5);
                 this.Life -= 1;
 
                 // Life 0 で死亡
