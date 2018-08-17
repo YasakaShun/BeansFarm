@@ -76,6 +76,9 @@
     <Compile Include="Assets\Resources\Script\Main\Field\Normal\StateInit.cs" />
     <Compile Include="Assets\Resources\Script\Main\Field\Normal\StateWait.cs" />
     <Compile Include="Assets\Resources\Script\Main\GameManager.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Info\CountText.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Info\ResultText.cs" />
+    <Compile Include="Assets\Resources\Script\Main\InfoManager.cs" />
     <Compile Include="Assets\Resources\Script\Main\Obstacle\IState.cs" />
     <Compile Include="Assets\Resources\Script\Main\Obstacle\Manager.cs" />
     <Compile Include="Assets\Resources\Script\Main\Obstacle\Obj.cs" />
@@ -91,6 +94,7 @@
     <Compile Include="Assets\Resources\Script\Main\Player\StateToWaterBall.cs" />
     <Compile Include="Assets\Resources\Script\Main\Player\StateUseWater.cs" />
     <Compile Include="Assets\Resources\Script\Main\Player\StateWait.cs" />
+    <Compile Include="Assets\Resources\Script\Main\StageManager.cs" />
     <Compile Include="Assets\Resources\Script\Main\TouchManager.cs" />
     <Compile Include="Assets\Resources\Script\Main\WaterBall.cs" />
     <Compile Include="Assets\Resources\Script\PrefabManager.cs" />
