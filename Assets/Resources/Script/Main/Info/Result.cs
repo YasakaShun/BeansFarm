@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 namespace BeansFarm
 {
-    public class ResultText : MonoBehaviour
+    public class Result : MonoBehaviour
     {
         void Start()
         {
             mIsVisible = false;
-            GetComponent<Text>().enabled = false;
+            GetComponent<Canvas>().enabled = false;
         }
 
         void Update()
@@ -26,7 +26,7 @@ namespace BeansFarm
             }
 
             mIsVisible = true;
-            GetComponent<Text>().enabled = true;
+            GetComponent<Canvas>().enabled = true;
         }
 
         private bool mIsVisible;

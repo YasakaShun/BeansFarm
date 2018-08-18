@@ -77,7 +77,9 @@
     <Compile Include="Assets\Resources\Script\Main\Field\Normal\StateWait.cs" />
     <Compile Include="Assets\Resources\Script\Main\GameManager.cs" />
     <Compile Include="Assets\Resources\Script\Main\Info\CountText.cs" />
-    <Compile Include="Assets\Resources\Script\Main\Info\ResultText.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Info\Result.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Info\RetryButton.cs" />
+    <Compile Include="Assets\Resources\Script\Main\Info\TitleButton.cs" />
     <Compile Include="Assets\Resources\Script\Main\InfoManager.cs" />
     <Compile Include="Assets\Resources\Script\Main\Obstacle\IState.cs" />
     <Compile Include="Assets\Resources\Script\Main\Obstacle\Manager.cs" />

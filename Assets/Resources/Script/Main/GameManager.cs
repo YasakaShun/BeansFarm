@@ -50,6 +50,7 @@ namespace BeansFarm
             PlayerManager.Update();
             ObstacleManager.Update();
         }
+
     }
 
 }
