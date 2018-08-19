@@ -64,7 +64,7 @@ public class TouchManager
                 var signal = Player.Signal.ToObstacle;
                 var players = Player.Manager.AllPlayer()
                     .Where(x => x.CanReceiveSignal(signal))
-                    //.Where(x => x.IsReachable(waterBall.transform.position))
+                    //.Where(x => x.IsReachable(obstacle))
                     .ToArray();
                 if (!players.Any())
                 {
@@ -72,6 +72,38 @@ public class TouchManager
                 }
 
                 players.First().ReceiveSignal(signal, hit.collider.gameObject);
+            }
+            else if (hit.collider.gameObject.CompareTag("Cell"))
+            {
+                var cell = hit.collider.gameObject.GetComponent<Field.Cell>();
+                if (cell.kind != Field.Cell.Kind.Farm)
+                {
+                    return;
+                }
+
+                var signal = Player.Signal.ToFarm;
+                var players = Player.Manager.AllPlayer()
+                    .Where(x => x.CanReceiveSignal(signal))
+                    .Where(x => x.IsReachable(cell.transform.position))
+                    .ToArray();
+                if (!players.Any())
+                {
+                    return;
+                }
+
+                Player.Beans player = players.First();
+                float min = 10000.0f;
+                foreach (var p in players)
+                {
+                    float dist = Vector3.Distance(p.transform.position, cell.transform.position);
+                    if (dist < min)
+                    {
+                        min = dist;
+                        player = p;
+                    }
+                }
+
+                player.ReceiveSignal(signal, cell.gameObject);
             }
         }
     }

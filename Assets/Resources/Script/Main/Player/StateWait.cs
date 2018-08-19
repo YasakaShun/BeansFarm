@@ -40,6 +40,8 @@ namespace Player
         {
             switch (signal)
             {
+                case Signal.None:
+                    return false;
                 case Signal.ToFarm:
                     if (player.hasWaterBall())
                     {

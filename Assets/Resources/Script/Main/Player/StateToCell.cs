@@ -44,7 +44,6 @@ namespace Player
 
         public void OnEnd()
         {
-
         }
 
         public void Update()
@@ -57,11 +56,15 @@ namespace Player
 
         public bool CanReceiveSignal(Signal signal)
         {
-            return false;
+            return signal == Signal.ToFarm;
         }
 
         public void OnReceiveSignal(Signal signal, GameObject gameObject)
         {
+            Debug.Assert(signal == Signal.ToFarm);
+
+            targetCell = gameObject;
+            player.Agent.SetDestination(targetCell.transform.position);
         }
 
         private Beans player;
