@@ -15,7 +15,7 @@ namespace BeansFarm
             Result,
         }
 
-        public int goalCount = 20;
+        public int goalCount = 15;
 
         public bool IsResult
         {
