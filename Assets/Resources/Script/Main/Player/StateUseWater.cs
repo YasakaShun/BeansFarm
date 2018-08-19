@@ -30,6 +30,11 @@ namespace Player
         public void OnEnd()
         {
             player.StopCoroutine(mCoroutine);
+
+            if (player.Signal == Signal.ToFarm)
+            {
+                player.ResetSignal();
+            }
         }
 
         public void Update()

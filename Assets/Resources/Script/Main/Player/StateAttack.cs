@@ -31,6 +31,11 @@ namespace Player
         {
             player.StopCoroutine(mCoroutine);
             player.Anim.SetBool("Jump", false);
+
+            if (player.Signal == Signal.ToObstacle)
+            {
+                player.ResetSignal();
+            }
         }
 
         public void Update()

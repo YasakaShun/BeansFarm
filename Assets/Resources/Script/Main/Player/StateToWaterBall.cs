@@ -47,6 +47,10 @@ namespace Player
 
         public void OnEnd()
         {
+            if (player.Signal == Signal.ToWaterBall)
+            {
+                player.ResetSignal();
+            }
         }
 
         public void Update()

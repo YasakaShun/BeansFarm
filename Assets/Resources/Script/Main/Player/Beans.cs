@@ -13,6 +13,7 @@ namespace Player
         public int Life;
         public NavMeshAgent Agent { get; private set; }
         public Animator Anim { get; private set; }
+        public Signal Signal { get; private set; }
         private IState state;
 
         void Start()
@@ -20,6 +21,8 @@ namespace Player
             WaterBall = null;
             Agent = GetComponent<NavMeshAgent>();
             Anim = GetComponent<Animator>();
+            Signal = Signal.None;
+            state = null;
 
             StartCoroutine(UpdateLife());
 
@@ -99,6 +102,10 @@ namespace Player
 
         public bool CanReceiveSignal(Signal signal)
         {
+            if (Signal != Signal.None)
+            {
+                return false;
+            }
             if (state == null)
             {
                 return false;
@@ -109,7 +116,13 @@ namespace Player
         public void ReceiveSignal(Signal signal, GameObject gameObject)
         {
             Debug.Assert(CanReceiveSignal(signal));
+            Signal = signal;
             state.OnReceiveSignal(signal, gameObject);
+        }
+
+        public void ResetSignal()
+        {
+            Signal = Signal.None;
         }
 
         private void UpdateAnim()

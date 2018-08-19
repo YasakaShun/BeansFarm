@@ -57,7 +57,6 @@ namespace Player
 
         public void OnEnd()
         {
-
         }
 
         public void Update()
